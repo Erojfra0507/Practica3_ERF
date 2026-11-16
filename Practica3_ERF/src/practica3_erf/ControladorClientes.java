@@ -7,21 +7,28 @@ public class ControladorClientes extends ArrayList<Cliente> {
 
     public ControladorClientes() {
         super();
-        this.actual = -1;
+        this.actual = 0;
     }
 
     public boolean esVacia() {
         return this.isEmpty();
     }
 
+     public boolean esPrimero() {
+        return !this.isEmpty() && actual == 0;
+    }
+
+    public boolean esUltimo() {
+        return !this.isEmpty() && actual == this.size() - 1;
+    }
     public void avanzar() {
-        if (!this.isEmpty() && actual < this.size() - 1) {
+        if (!this.esUltimo()) {
             actual++;
         }
     }
 
     public void retroceder() {
-        if (!this.isEmpty() && actual > 0) {
+        if (!this.esPrimero()) {
             actual--;
         }
     }
@@ -42,13 +49,6 @@ public class ControladorClientes extends ArrayList<Cliente> {
         }
     }
 
-    public boolean esPrimero() {
-        return !this.isEmpty() && actual == 0;
-    }
-
-    public boolean esUltimo() {
-        return !this.isEmpty() && actual == this.size() - 1;
-    }
 
     public void añadirCliente(Cliente c) {
         this.add(c);
